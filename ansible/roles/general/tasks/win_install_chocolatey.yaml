@@ -30,11 +30,8 @@
     version: 3.9
     state: present
 
-- name: install mod
-  win_shell: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
-
 - name: refresh env
-  win_shell: refreshenv
+  win_shell: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1 | refreshenv
 
 - name: Ensure botocore and boto3 modules are installed
   win_shell: pip install botocore boto3 --user
