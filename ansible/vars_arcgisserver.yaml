@@ -28,7 +28,7 @@ win_config_store_dir: C:\esri\config
 win_install_log_dir: C:\esri\logs
 
 win_install_log_path: "{{ win_install_log_dir }}\\arcgis-server.log"
-win_setup_msi_path: "{{ win_remote_extract_dest_dir }}\\ArcGIS 10.9.1\\ArcGISServer\\SetupFiles\\setup.msi"
+win_setup_msi_path: "{{ win_remote_extract_dest_dir }}\\ArcGIS  {{ arcgis_version }}\\{{ win_arcgis_component }}\\SetupFiles\\setup.msi"
 win_setup_msi_with_log_arguments: "ACCEPTEULA{{'='}}yes INSTALLDIR{{'='}}{{ win_install_dir }} INSTALLDIR1{{'='}}{{ win_install_python_dir }} USER_NAME{{'='}}{{ arcgis_service_account }} PASSWORD{{'='}}{{ arcgis_service_account_pw }} /L*V {{ win_install_log_path }}"
 win_setup_msi_argumentlist: "/i \"\"{{ win_setup_msi_path }}\"\" {{ win_setup_msi_with_log_arguments }}"
 win_setup_msi_process_command: "Start-Process 'msiexec' -ArgumentList \"{{ win_setup_msi_argumentlist }}\" -Wait" 

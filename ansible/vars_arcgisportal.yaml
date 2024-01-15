@@ -29,7 +29,7 @@ win_portal_dir: C:\esri\content
 win_install_log_dir: C:\esri\logs
 win_install_log_path: "{{ win_install_log_dir }}\\arcgis-portal.log"
 
-win_setup_msi_path: "{{ win_remote_extract_dest_dir }}\\ArcGIS 10.9.1\\PortalForArcGIS\\SetupFiles\\setup.msi"
+win_setup_msi_path: "{{ win_remote_extract_dest_dir }}\\ArcGIS {{ arcgis_version }}\\{{ win_arcgis_component }}\\SetupFiles\\setup.msi"
 win_setup_msi_with_log_arguments: "/qn ACCEPTEULA{{'='}}yes INSTALLDIR{{'='}}{{ win_install_dir }} CONTENTDIR{{'='}}{{ win_portal_dir }} USER_NAME{{'='}}{{ arcgis_service_account }} PASSWORD{{'='}}{{ arcgis_service_account_pw }} /L*V {{ win_install_log_path }}"
 win_setup_msi_argumentlist: "/i \"\"{{ win_setup_msi_path }}\"\" {{ win_setup_msi_with_log_arguments }}"
 win_setup_msi_process_command: "Start-Process 'msiexec' -ArgumentList \"{{ win_setup_msi_argumentlist }}\" -Wait"
