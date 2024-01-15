@@ -74,7 +74,7 @@ source "amazon-ebs" "windowsserver2019" {
   communicator = var.aws_connection.win_communicator
   winrm_username = var.aws_connection.winrm_username
   user_data_file = var.aws_connection.user_data_file
-  ssh_keypair_name = "aws-example-key"
+  ssh_keypair_name = "github-packer"
   ssh_private_key_file = var.aws_connection.ssh_private_key_file
 }
 
