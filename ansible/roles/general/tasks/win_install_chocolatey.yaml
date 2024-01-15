@@ -30,8 +30,27 @@
     version: 3.9
     state: present
 
-- name: refresh env
-  win_shell: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1 | refreshenv
+# - name: refresh env
+#  win_shell: refreshenv
+
+- name: restart sshd to reflect changes to PATH
+  win_service:
+    name: sshd
+    state: restarted
+  async: 60
+  poll: 0
+  register: sshd_restart
+
+- name: wait for connectivity to be resumed after sshd restart
+  async_status:
+    jid: "{{ sshd_restart.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 60
+  delay: 1
+
+- name: reset
+  meta: reset_connection
 
 - name: Ensure botocore and boto3 modules are installed
   win_shell: pip install botocore boto3 --user
