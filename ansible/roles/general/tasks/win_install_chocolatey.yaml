@@ -30,6 +30,9 @@
     version: 3.9
     state: present
 
+- name: install mod
+  win_shell: Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+
 - name: refresh env
   win_shell: refreshenv
 
