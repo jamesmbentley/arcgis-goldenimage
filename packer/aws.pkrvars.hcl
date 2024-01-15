@@ -8,7 +8,7 @@ aws_connection = {
   "win_communicator" = "winrm"
   "winrm_username" = "Administrator"
   "ssh_username"  = "ubuntu"
-  "ssh_keypair_name" = "aws-example-key"
+  "ssh_keypair_name" = "github-action"
   "ssh_private_key_file" = "../ansible/privatekey"
 }
 

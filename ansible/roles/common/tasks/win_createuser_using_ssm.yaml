@@ -2,7 +2,7 @@
 - name: get secrets with ssm paramter store
   set_fact:
     initpass:
-      secret: "{{ lookup('aws_ssm', 'PARAMETERSTOREPATH') }}"
+      secret: "{{ lookup('aws_ssm', '/esri/arcgis/admin') }}"
 
 - name: 'output secrets'
   debug: var="{{ item }}"

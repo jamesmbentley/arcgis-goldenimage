@@ -21,22 +21,22 @@ on:
         type: choice
         description: create at region
         options:
-        - ap-southeast-1
-        - ap-southeast-2
-        - ap-northeast-1
-        - ap-northeast-2
+        - us-east-1
+        - us-east-2
+        - us-west-1
+        - us-west-2
       windowsversion:
         type: choice
         description: which version you want to create
         options:
-        - 2019
-        - 2022
+        - "2019"
+        - "2022"
 
 env:
   # set with your preferred AWS region, e.g. us-west-1
   AWS_REGION: ${{ github.event.inputs.region }}
   # set with GitHub Actions role name
-  AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-action-to-ec2
+  AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
   ROLLE_SESSION_NAME: GithubAction-PackerBuild
   PACKER_VERSION: 1.8.1
   PYTHON_VERSION: 3.8
@@ -50,7 +50,7 @@ defaults:
 
 jobs:
   packer:
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/working' }}
     runs-on: ubuntu-20.04
     # These permissions are needed to interact with GitHub's OIDC Token endpoint.
     permissions:
@@ -112,7 +112,7 @@ jobs:
           version: 2
 
       - name: Download privatekey ssm
-        run: aws ssm get-parameter --name "sampleprivatekey" --with-decryption | jq -r .Parameter.Value > ./privatekey
+        run: aws ssm get-parameter --name "/key/github-action" --with-decryption | jq -r .Parameter.Value > ./privatekey
         working-directory: ./ansible/
       
       # - name: Packer validate
