@@ -213,7 +213,7 @@ build {
   }
 
   provisioner "powershell" {
-    only = ["arcgisdatastore", "arcgisserver", "arcgisportal"]
+    only = ["arcgisportal", "arcgisserver", "arcgisdatastore"]
     scripts = [var.provisioningscripts[1]]
   }
 }

@@ -1,7 +1,7 @@
 aws_connection = {
   # "region"        = "ap-northeast-1"
   # set with your preferred AWS region, e.g. ap-northeast-1 tokyo, ap-southeast-1 singapore, ap-southeast-2 sydney
-  "instance_type" = "t3.large"
+  "instance_type" = "t3.xlarge"
   # t2.micro, t2.large
   # for aws instance of Ubuntu, user is default ubuntu
   "user_data_file" = "../scripts/win_rm.txt"
