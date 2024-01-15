@@ -34,7 +34,7 @@ win_setup_msi_with_log_arguments: "/qn ACCEPTEULA{{'='}}yes INSTALLDIR{{'='}}{{ 
 win_setup_msi_argumentlist: "/i \"\"{{ win_setup_msi_path }}\"\" {{ win_setup_msi_with_log_arguments }}"
 win_setup_msi_process_command: "Start-Process 'msiexec' -ArgumentList \"{{ win_setup_msi_argumentlist }}\" -Wait"
 win_setup_webstyle_msi_with_log_arguments: "/qn ACCEPTEULA{{'='}}yes /L*V {{ win_install_log_path }}"
-win_setup_webstyle_msi_path: "{{ win_remote_extract_dest_dir }}\\ArcGIS 10.9.1\\ArcGISWebStyles\\SetupFiles\\setup.msi"
+win_setup_webstyle_msi_path: "{{ win_remote_extract_dest_dir }}\\ArcGIS {{ arcgis_version }}\\{{ win_arcgis_webstyle }}\\SetupFiles\\setup.msi"
 win_setup_webstyle_msi_argumentlist: "/i \"\"{{ win_setup_webstyle_msi_path }}\"\" {{ win_setup_webstyle_msi_with_log_arguments }}"
 win_setup_webstyle_msi_process_command: "Start-Process 'msiexec' -ArgumentList \"{{ win_setup_webstyle_msi_argumentlist }}\" -Wait" 
 # service name parameter
