@@ -38,8 +38,8 @@ env:
   # set with GitHub Actions role name
   AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
   ROLLE_SESSION_NAME: GithubAction-PackerBuild
-  PACKER_VERSION: 1.8.1
-  PYTHON_VERSION: 3.8
+  PACKER_VERSION: 1.10
+  PYTHON_VERSION: 3.9
   ANSIBLE_VERSION: 5.9.0
   EGIHS_TARGET: ${{ github.event.inputs.target }}
   EGIHS_WINDOW_VERSION: ${{ github.event.inputs.windowsversion }}
@@ -103,7 +103,7 @@ jobs:
       - name: Set up Ansible
         run: |
           python -m pip install --upgrade pip
-          pip install ansible==${{ env.ANSIBLE_VERSION }} ansible-lint
+          pip install ansible ansible-lint
 
       - name: install awscli
         id: install-aws-cli
