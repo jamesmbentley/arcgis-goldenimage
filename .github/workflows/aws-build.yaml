@@ -38,7 +38,7 @@ env:
   # set with GitHub Actions role name
   AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
   ROLLE_SESSION_NAME: GithubAction-PackerBuild
-  PACKER_VERSION: 1.10
+  PACKER_VERSION: 1.9.5
   PYTHON_VERSION: 3.9
   ANSIBLE_VERSION: 5.9.0
   EGIHS_TARGET: ${{ github.event.inputs.target }}
