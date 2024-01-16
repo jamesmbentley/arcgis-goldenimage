@@ -35,7 +35,7 @@
 
 - name: install arcgis
   register: install_arcgis
-  async: 1230
+  async: 1800
   poll: 0
   win_package:
     path: "{{ win_setup_msi_path }}"
