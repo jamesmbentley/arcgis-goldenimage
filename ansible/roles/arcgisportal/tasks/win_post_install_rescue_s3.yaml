@@ -23,6 +23,9 @@
     win_shell: |
       $dateval = (get-date).ToUniversalTime().ToString("yyyy-MM-dd'T'HH-mm-ss")
       Write-S3Object -BucketName "{{ logs_bucket_name }}" -File "{{ win_install_log_path }}" -Key "$dateval/install.log"
+
+  - name: Start Windows Defender
+    win_shell: Set-MpPreference -DisableRealtimeMonitoring $false
   
   rescue:
     - name: error rescue installation log

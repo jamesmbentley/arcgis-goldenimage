@@ -24,6 +24,9 @@
 #     version: '2.7.11'
 #     state: present
 
+- name: Disable Windows Defender
+  win_shell: Set-MpPreference -DisableRealtimeMonitoring $true
+
 - name: Install python 3.9
   win_chocolatey:
     name: python
