@@ -59,7 +59,7 @@ source "amazon-ebs" "windowsserver2019" {
   # Assume Role (local. the aws configure action is used on github action)
   # Polling
   aws_polling {
-    delay_seconds = 30
+    delay_seconds = 60
     max_attempts = 120
   }
   # Run
