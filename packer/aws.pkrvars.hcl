@@ -1,5 +1,5 @@
 aws_connection = {
-  # "region"        = "ap-northeast-1"
+  "region"        = "us-east-1"
   # set with your preferred AWS region, e.g. ap-northeast-1 tokyo, ap-southeast-1 singapore, ap-southeast-2 sydney
   "instance_type" = "t3.xlarge"
   # t2.micro, t2.large
@@ -19,6 +19,6 @@ ansible_playbooks = {
 }
 
 provisioningscripts = [
- # "../scripts/aws_windows_sysprep.ps1",
+ "../scripts/aws_windows_sysprep.ps1",
   "../scripts/aws_windows_sysprep_2019.ps1",
 ]

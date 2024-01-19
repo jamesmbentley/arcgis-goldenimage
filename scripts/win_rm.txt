@@ -14,9 +14,9 @@ net stop winrm
 sc config winrm start=auto
 net start winrm
 
-Initialize-Disk -Number 1 -PartitionStyle "MBR"
-New-Partition -DiskNumber 1 -UseMaximumSize -IsActive -AssignDriveLetter
-Format-Volume -DriveLetter d -Confirm:$FALSE
+# Initialize-Disk -Number 1 -PartitionStyle "MBR"
+# New-Partition -DiskNumber 1 -UseMaximumSize -IsActive -AssignDriveLetter
+# Format-Volume -DriveLetter d -Confirm:$FALSE
 
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
 </powershell>

@@ -59,8 +59,8 @@ source "amazon-ebs" "windowsserver2019" {
   # Assume Role (local. the aws configure action is used on github action)
   # Polling
   aws_polling {
-    delay_seconds = 60
-    max_attempts = 120
+    delay_seconds = 30
+    max_attempts = 240
   }
   # Run
   source_ami_filter {
@@ -102,12 +102,12 @@ build {
       volume_type = "gp3"
       delete_on_termination = true
     }
-    launch_block_device_mappings {
-      device_name = "xvdb"
-      volume_size = 100
-      volume_type = "gp3"
-      delete_on_termination = true
-    }
+    # launch_block_device_mappings {
+    #   device_name = "xvdb"
+    #   volume_size = 100
+    #   volume_type = "gp3"
+    #   delete_on_termination = true
+    # }
   }
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisdatastore-${local.timestamp}"
@@ -127,12 +127,12 @@ build {
       volume_type = "gp3"
       delete_on_termination = true
     }
-    launch_block_device_mappings {
-      device_name = "xvdb"
-      volume_size = 100
-      volume_type = "gp3"
-      delete_on_termination = true
-    }
+    # launch_block_device_mappings {
+    #   device_name = "xvdb"
+    #   volume_size = 100
+    #   volume_type = "gp3"
+    #   delete_on_termination = true
+    # }
   } 
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisportal-${local.timestamp}"
@@ -152,12 +152,12 @@ build {
       volume_type = "gp3"
       delete_on_termination = true
     }
-    launch_block_device_mappings {
-      device_name = "xvdb"
-      volume_size = 100
-      volume_type = "gp3"
-      delete_on_termination = true
-    }
+    # launch_block_device_mappings {
+    #   device_name = "xvdb"
+    #   volume_size = 100
+    #   volume_type = "gp3"
+    #   delete_on_termination = true
+    # }
   }
 
   provisioner "ansible" {
@@ -215,6 +215,6 @@ build {
   provisioner "powershell" {
     only = ["arcgisportal", "arcgisserver", "arcgisdatastore"]
     #only = ["arcgisportal"]
-    scripts = [var.provisioningscripts]
+    scripts = [var.provisioningscripts[0]]
   }
 }
