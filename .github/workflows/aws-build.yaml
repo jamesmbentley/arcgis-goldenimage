@@ -165,4 +165,4 @@ jobs:
 
       - name: Error handling
         if: ${{ steps.file_check.outputs.existing == 'True' }}
-        run: aws s3 cp ./crash.log s3://egihs-packer-log/
+        run: aws s3 cp ./crash.log s3://bentley-esri-logs/

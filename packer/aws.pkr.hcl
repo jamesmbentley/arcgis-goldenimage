@@ -41,21 +41,20 @@ locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 # 	--output table \
 # 	--profile YOURPROFILE
 
-
 source "amazon-ebs" "windowsserver2019" {
   # AMI
   region  = var.region
   instance_type = var.aws_connection.instance_type
   # Access (local. the aws configure action is used on github action)
-
-  temporary_iam_instance_profile_policy_document {
-    Statement {
-        Action   = ["s3:*","logs:*"]
-        Effect   = "Allow"
-        Resource = ["*"]
-    }
-    Version = "2012-10-17"
-  }
+  iam_instance_profile = "packer-ec2-role"
+  # temporary_iam_instance_profile_policy_document {
+  #   Statement {
+  #       Action   = ["s3:*","logs:*"]
+  #       Effect   = "Allow"
+  #       Resource = ["*"]
+  #   }
+  #   Version = "2012-10-17"
+  # }
   # Assume Role (local. the aws configure action is used on github action)
   # Polling
   aws_polling {
@@ -87,6 +86,10 @@ build {
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisserver-${local.timestamp}"
     name = "win-arcgisserver"
+    aws_polling {
+      delay_seconds = 30
+      max_attempts = 240
+    }
     tags = {
       OS_Version = "Windows"
       OS_Release = "2019"
@@ -112,6 +115,10 @@ build {
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisdatastore-${local.timestamp}"
     name = "win-arcgisdatastore"
+    aws_polling {
+      delay_seconds = 30
+      max_attempts = 240
+    }
     tags = {
       OS_Version = "Windows"
       OS_Release = "2019"
@@ -137,6 +144,10 @@ build {
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisportal-${local.timestamp}"
     name = "win-arcgisportal"
+    aws_polling {
+      delay_seconds = 30
+      max_attempts = 240
+    }
     tags = {
       OS_Version = "Windows"
       OS_Release = "2019"

@@ -19,6 +19,6 @@ ansible_playbooks = {
 }
 
 provisioningscripts = [
- "../scripts/aws_windows_sysprep.ps1",
+ # "../scripts/aws_windows_sysprep.ps1",
   "../scripts/aws_windows_sysprep_2019.ps1",
 ]
