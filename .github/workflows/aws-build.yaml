@@ -37,8 +37,8 @@ env:
   AWS_REGION: ${{ github.event.inputs.region }}
   # set with GitHub Actions role name
   AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GithubActionsRole
-  AWS_MAX_ATTEMPTS: 120
-  AWS_POLL_DELAY_SECONDS: 60
+  AWS_MAX_ATTEMPTS: 240
+  AWS_POLL_DELAY_SECONDS: 30
   ROLLE_SESSION_NAME: GithubAction-PackerBuild
   PACKER_VERSION: 1.9.5
   PYTHON_VERSION: 3.9
