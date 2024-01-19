@@ -53,7 +53,7 @@ defaults:
 jobs:
   packer:
     if: ${{ github.ref == 'refs/heads/working' }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     # These permissions are needed to interact with GitHub's OIDC Token endpoint.
     permissions:
       id-token: write
