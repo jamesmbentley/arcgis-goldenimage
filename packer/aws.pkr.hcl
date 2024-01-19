@@ -57,10 +57,10 @@ source "amazon-ebs" "windowsserver2019" {
   # }
   # Assume Role (local. the aws configure action is used on github action)
   # Polling
-  aws_polling {
-    delay_seconds = 30
-    max_attempts = 240
-  }
+  # aws_polling {
+  #   delay_seconds = 30
+  #   max_attempts = 240
+  # }
   # Run
   source_ami_filter {
     filters = {
@@ -115,10 +115,10 @@ build {
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisdatastore-${local.timestamp}"
     name = "win-arcgisdatastore"
-    aws_polling {
-      delay_seconds = 30
-      max_attempts = 240
-    }
+    # aws_polling {
+    #   delay_seconds = 30
+    #   max_attempts = 240
+    # }
     tags = {
       OS_Version = "Windows"
       OS_Release = "2019"
@@ -144,10 +144,10 @@ build {
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisportal-${local.timestamp}"
     name = "win-arcgisportal"
-    aws_polling {
-      delay_seconds = 30
-      max_attempts = 240
-    }
+    # aws_polling {
+    #   delay_seconds = 30
+    #   max_attempts = 240
+    # }
     tags = {
       OS_Version = "Windows"
       OS_Release = "2019"
