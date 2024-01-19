@@ -213,8 +213,8 @@ build {
   }
 
   provisioner "powershell" {
-    only = ["arcgisportal", "arcgisserver", "arcgisdatastore"]
-    #only = ["arcgisportal"]
+   # only = ["arcgisportal", "arcgisserver", "arcgisdatastore"]
+    only = ["amazon-ebs.win-arcgisserver","amazon-ebs.win-arcgisportal", "amazon-ebs.win-arcgisdatastore"]
     scripts = [var.provisioningscripts[0]]
   }
 }
