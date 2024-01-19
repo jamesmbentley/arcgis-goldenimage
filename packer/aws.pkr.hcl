@@ -84,56 +84,56 @@ source "amazon-ebs" "windowsserver2019" {
 build {
   name = "windowsserver2019"
 
-  # source "source.amazon-ebs.windowsserver2019" {
-  #   ami_name      = "arcgisserver-${local.timestamp}"
-  #   name = "win-arcgisserver"
-  #   tags = {
-  #     OS_Version = "Windows"
-  #     OS_Release = "2019"
-  #     Base_AMI_ID = "{{ .SourceAMI }}"
-  #     Base_AMI_Name = "{{ .SourceAMIName }}"
-  #     AMI_ROLE = "dev"
-  #     AMI_Release = "${local.timestamp}"
-  #     Name = "arcgisserver-${local.timestamp}"
-  #   }
-  #   launch_block_device_mappings {
-  #     device_name = "/dev/sda1"
-  #     volume_size = 90
-  #     volume_type = "gp3"
-  #     delete_on_termination = true
-  #   }
-  #   launch_block_device_mappings {
-  #     device_name = "xvdb"
-  #     volume_size = 100
-  #     volume_type = "gp3"
-  #     delete_on_termination = true
-  #   }
-  # }
-  # source "source.amazon-ebs.windowsserver2019" {
-  #   ami_name      = "arcgisdatastore-${local.timestamp}"
-  #   name = "win-arcgisdatastore"
-  #   tags = {
-  #     OS_Version = "Windows"
-  #     OS_Release = "2019"
-  #     Base_AMI_ID = "{{ .SourceAMI }}"
-  #     Base_AMI_Name = "{{ .SourceAMIName }}"
-  #     AMI_ROLE = "dev"
-  #     AMI_Release = "${local.timestamp}"
-  #     Name = "arcgisdatastore-${local.timestamp}"
-  #   }
-  #   launch_block_device_mappings {
-  #     device_name = "/dev/sda1"
-  #     volume_size = 90
-  #     volume_type = "gp3"
-  #     delete_on_termination = true
-  #   }
-  #   launch_block_device_mappings {
-  #     device_name = "xvdb"
-  #     volume_size = 100
-  #     volume_type = "gp3"
-  #     delete_on_termination = true
-  #   }
-  # } 
+  source "source.amazon-ebs.windowsserver2019" {
+    ami_name      = "arcgisserver-${local.timestamp}"
+    name = "win-arcgisserver"
+    tags = {
+      OS_Version = "Windows"
+      OS_Release = "2019"
+      Base_AMI_ID = "{{ .SourceAMI }}"
+      Base_AMI_Name = "{{ .SourceAMIName }}"
+      AMI_ROLE = "dev"
+      AMI_Release = "${local.timestamp}"
+      Name = "arcgisserver-${local.timestamp}"
+    }
+    launch_block_device_mappings {
+      device_name = "/dev/sda1"
+      volume_size = 90
+      volume_type = "gp3"
+      delete_on_termination = true
+    }
+    launch_block_device_mappings {
+      device_name = "xvdb"
+      volume_size = 100
+      volume_type = "gp3"
+      delete_on_termination = true
+    }
+  }
+  source "source.amazon-ebs.windowsserver2019" {
+    ami_name      = "arcgisdatastore-${local.timestamp}"
+    name = "win-arcgisdatastore"
+    tags = {
+      OS_Version = "Windows"
+      OS_Release = "2019"
+      Base_AMI_ID = "{{ .SourceAMI }}"
+      Base_AMI_Name = "{{ .SourceAMIName }}"
+      AMI_ROLE = "dev"
+      AMI_Release = "${local.timestamp}"
+      Name = "arcgisdatastore-${local.timestamp}"
+    }
+    launch_block_device_mappings {
+      device_name = "/dev/sda1"
+      volume_size = 90
+      volume_type = "gp3"
+      delete_on_termination = true
+    }
+    launch_block_device_mappings {
+      device_name = "xvdb"
+      volume_size = 100
+      volume_type = "gp3"
+      delete_on_termination = true
+    }
+  } 
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisportal-${local.timestamp}"
     name = "win-arcgisportal"
@@ -160,21 +160,21 @@ build {
     }
   }
 
-  # provisioner "ansible" {
-  #   only = ["amazon-ebs.win-arcgisserver"]
-  #   playbook_file           = var.ansible_playbooks.arcgisserver_playbook_file
-  #   user                    = var.aws_connection.winrm_username
-  #   ansible_env_vars    = [
-  #       "ANSIBLE_HOST_KEY_CHECKING=False",
-  #       "ANSIBLE_NOCOLOR=True",
-  #       "ANSIBLE_DEBUG=0"
-  #   ]
-  #   extra_arguments = [
-  #     "-e",
-  #     "'ansible_python_interpreter=C:\\Python39\\bin'"
-  #   ]
-  #   use_proxy               = false
-  # }
+  provisioner "ansible" {
+    only = ["amazon-ebs.win-arcgisserver"]
+    playbook_file           = var.ansible_playbooks.arcgisserver_playbook_file
+    user                    = var.aws_connection.winrm_username
+    ansible_env_vars    = [
+        "ANSIBLE_HOST_KEY_CHECKING=False",
+        "ANSIBLE_NOCOLOR=True",
+        "ANSIBLE_DEBUG=0"
+    ]
+    extra_arguments = [
+      "-e",
+      "'ansible_python_interpreter=C:\\Python39\\bin'"
+    ]
+    use_proxy               = false
+  }
 
   provisioner "ansible" {
     only = ["amazon-ebs.win-arcgisportal"]
@@ -192,29 +192,29 @@ build {
     use_proxy               = false
   }
 
-  # provisioner "ansible" {
-  #   only = ["amazon-ebs.win-arcgisdatastore"]
-  #   playbook_file           = var.ansible_playbooks.arcgisdatastore_playbook_file
-  #   user                    = var.aws_connection.winrm_username
-  #   ansible_env_vars    = [
-  #       "ANSIBLE_HOST_KEY_CHECKING=False",
-  #       "ANSIBLE_NOCOLOR=True",
-  #       "ANSIBLE_DEBUG=0"
-  #   ]
-  #   extra_arguments = [
-  #     "-e",
-  #     "'ansible_python_interpreter=C:\\Python39\\bin'"
-  #   ]
-  #   use_proxy               = false
+  provisioner "ansible" {
+    only = ["amazon-ebs.win-arcgisdatastore"]
+    playbook_file           = var.ansible_playbooks.arcgisdatastore_playbook_file
+    user                    = var.aws_connection.winrm_username
+    ansible_env_vars    = [
+        "ANSIBLE_HOST_KEY_CHECKING=False",
+        "ANSIBLE_NOCOLOR=True",
+        "ANSIBLE_DEBUG=0"
+    ]
+    extra_arguments = [
+      "-e",
+      "'ansible_python_interpreter=C:\\Python39\\bin'"
+    ]
+    use_proxy               = false
 
-  #   # "-vvv"
-  #   # "--extra-vars",
-  #   # "'ansible_winrm_read_timeout_sec=1000 ansible_winrm_operation_timeout_sec=900'"
-  # }
+    # "-vvv"
+    # "--extra-vars",
+    # "'ansible_winrm_read_timeout_sec=1000 ansible_winrm_operation_timeout_sec=900'"
+  }
 
   provisioner "powershell" {
-    # only = ["arcgisportal", "arcgisserver", "arcgisdatastore"]
-    only = ["arcgisportal"]
+    only = ["arcgisportal", "arcgisserver", "arcgisdatastore"]
+    #only = ["arcgisportal"]
     scripts = [var.provisioningscripts]
   }
 }

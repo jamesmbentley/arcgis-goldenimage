@@ -20,10 +20,10 @@ win_remote_temp_dest_dir: C:\temp\arcgis
 win_remote_extract_dest_dir: C:\temp\setup
 win_copy_local_files:
   - PORTAL FOR ARCGIS INSTALLER FILE PATH
-  - PORTAL FOR ARCGIS WEBSTYLE INSTALLER FILE PATH
+  # - PORTAL FOR ARCGIS WEBSTYLE INSTALLER FILE PATH
 win_copy_s3_files:
   - Portal_for_ArcGIS_Windows_112_188250.exe
-  - Portal_for_ArcGIS_Web_Styles_Windows_112_188251.exe
+  # - Portal_for_ArcGIS_Web_Styles_Windows_112_188251.exe
 win_install_dir: C:\esri\arcgis
 win_portal_dir: C:\esri\content
 win_install_log_dir: C:\esri\logs

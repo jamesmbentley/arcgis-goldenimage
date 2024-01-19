@@ -8,9 +8,9 @@
     delay: 10
     retries: 120
     changed_when: false
-    vars:
-      ansible_winrm_operation_timeout_sec: 120
-      ansible_winrm_read_timeout_sec: 150
+    # vars:
+    #   ansible_winrm_operation_timeout_sec: 120
+    #   ansible_winrm_read_timeout_sec: 150
 
   - name: Stop arcgis service
     win_shell: echo restart arcgis service
