@@ -105,12 +105,12 @@ build {
       volume_type = "gp3"
       delete_on_termination = true
     }
-    # launch_block_device_mappings {
-    #   device_name = "xvdb"
-    #   volume_size = 100
-    #   volume_type = "gp3"
-    #   delete_on_termination = true
-    # }
+    launch_block_device_mappings {
+      device_name = "xvdb"
+      volume_size = 100
+      volume_type = "gp3"
+      delete_on_termination = true
+    }
   }
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisdatastore-${local.timestamp}"
@@ -134,12 +134,12 @@ build {
       volume_type = "gp3"
       delete_on_termination = true
     }
-    # launch_block_device_mappings {
-    #   device_name = "xvdb"
-    #   volume_size = 100
-    #   volume_type = "gp3"
-    #   delete_on_termination = true
-    # }
+    launch_block_device_mappings {
+      device_name = "xvdb"
+      volume_size = 100
+      volume_type = "gp3"
+      delete_on_termination = true
+    }
   } 
   source "source.amazon-ebs.windowsserver2019" {
     ami_name      = "arcgisportal-${local.timestamp}"
@@ -163,12 +163,12 @@ build {
       volume_type = "gp3"
       delete_on_termination = true
     }
-    # launch_block_device_mappings {
-    #   device_name = "xvdb"
-    #   volume_size = 100
-    #   volume_type = "gp3"
-    #   delete_on_termination = true
-    # }
+    launch_block_device_mappings {
+      device_name = "xvdb"
+      volume_size = 100
+      volume_type = "gp3"
+      delete_on_termination = true
+    }
   }
 
   provisioner "ansible" {
